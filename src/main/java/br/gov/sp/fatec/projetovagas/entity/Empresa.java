@@ -19,7 +19,7 @@ public class Empresa {
     @Column(name = "emp_cnpj")
     private String cnpj;
 
-    @Column(name = "emp_nome_fatasia")
+    @Column(name = "emp_nome_fantasia")
     private String nomeFantasia;
 
     @Column(name = "emp_responsavel")

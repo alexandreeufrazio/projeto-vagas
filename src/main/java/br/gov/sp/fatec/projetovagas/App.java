@@ -31,6 +31,10 @@ public class App
         }catch(Exception e){
             manager.getTransaction().rollback();   
         }
+
+        System.out.println(empresa.getId());
+        manager.close();
+
     }
 
 
