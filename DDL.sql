@@ -37,7 +37,7 @@ create table end_endereco (
 	emp_id bigint unsigned,
 	end_tipo varchar(10) not null,
 	end_tipo_descricao varchar(50),
-	ent_numero varchar(10),
+	end_numero varchar(10),
 	end_cidade varchar(20),
 	end_estado varchar(20),
 	end_pais varchar(20),

@@ -28,7 +28,8 @@ public class App
             manager.getTransaction().begin();
             manager.persist(empresa);
             manager.getTransaction().commit();
-        }catch(Exception e){
+        }catch(IllegalStateException e){
+            e.printStackTrace();
             manager.getTransaction().rollback();   
         }
 
