@@ -1,10 +1,15 @@
 package br.gov.sp.fatec.projetovagas.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "emp_empresa")
@@ -27,6 +32,15 @@ public class Empresa {
 
     @Column(name = "emp_telefone")
     private String telefone;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "emp_id")
+    private Set<Vagas> vagasAnunciadas;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
+    private Set<ContaUsuario> contasUsarios;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
+    private Set<Endereco> enderecoEmpresa;
 
     public Long getId() {
         return id;
