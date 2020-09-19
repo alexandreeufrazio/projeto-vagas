@@ -8,7 +8,11 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		<class>br.gov.sp.fatec.avaliacao.entity.Empresa</class>
+        <class>br.gov.sp.fatec.projetovagas.entity.Empresa</class>
+        <class>br.gov.sp.fatec.projetovagas.entity.Vagas</class>
+        <class>br.gov.sp.fatec.projetovagas.entity.Endereco</class>
+        <class>br.gov.sp.fatec.projetovagas.entity.ContaUsuario</class>
+
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
