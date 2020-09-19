@@ -33,13 +33,13 @@ public class Empresa {
     @Column(name = "emp_telefone")
     private String telefone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "emp_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "empIdVagas")
     private Set<Vagas> vagasAnunciadas;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "empIdUsuario")
     private Set<ContaUsuario> contasUsarios;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "empIdEndereco")
     private Set<Endereco> enderecoEmpresa;
 
     public Long getId() {
@@ -80,5 +80,30 @@ public class Empresa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }   
+    }
+
+    public Set<Vagas> getVagasAnunciadas() {
+        return vagasAnunciadas;
+    }
+
+    public void setVagasAnunciadas(Set<Vagas> vagasAnunciadas) {
+        this.vagasAnunciadas = vagasAnunciadas;
+    }
+
+    public Set<ContaUsuario> getContasUsarios() {
+        return contasUsarios;
+    }
+
+    public void setContasUsarios(Set<ContaUsuario> contasUsarios) {
+        this.contasUsarios = contasUsarios;
+    }
+
+    public Set<Endereco> getEnderecoEmpresa() {
+        return enderecoEmpresa;
+    }
+
+    public void setEnderecoEmpresa(Set<Endereco> enderecoEmpresa) {
+        this.enderecoEmpresa = enderecoEmpresa;
+    }
+       
 }
