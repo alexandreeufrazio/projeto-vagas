@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+//import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "emp_empresa")
@@ -33,14 +33,14 @@ public class Empresa {
     @Column(name = "emp_telefone", length = 15, nullable = false)
     private String telefone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy =  "vagas")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy =  "empresa")
     private Set<Vagas> vagas;
-
+    /*
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
     private Set<ContaUsuario> conta;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "endereco")
-    private Set<Endereco> endereco;
+    private Set<Endereco> endereco;*/
 
     public Long getId() {
         return id;
@@ -82,6 +82,7 @@ public class Empresa {
         this.telefone = telefone;
     }
 
+    
     public Set<Vagas> getVagas() {
         return vagas;
     }
@@ -90,10 +91,12 @@ public class Empresa {
         this.vagas = vagas;
     }
 
+    /*
+
     public Set<ContaUsuario> getConta() {
         return conta;
     }
-
+    /*
     public void setConta(Set<ContaUsuario> conta) {
         this.conta = conta;
     }
@@ -105,5 +108,7 @@ public class Empresa {
     public void setEndereco(Set<Endereco> endereco) {
         this.endereco = endereco;
     }
+
+    */
        
 }

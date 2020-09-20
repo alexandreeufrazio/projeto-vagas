@@ -13,24 +13,26 @@ import javax.persistence.Table;
 @Table(name = "vag_vagas")
 @Entity
 public class Vagas{
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vag_id")
     private Long id;
 
-    @Column(name = "vag_cargo")
+    @Column(name = "vag_cargo", length = 50, nullable = false)
     private String cargo;
 
-    @Column(name = "vag_descricao")
+    @Column(name = "vag_descricao", length = 500, nullable = false)
     private String descricao;
 
-    @Column(name = "vag_status")
+    @Column(name = "vag_status", length = 10, nullable = false)
     private String status;
 
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "emp_id")
-    private Empresa empIdVagas;
-
+    private Empresa empresa;
+    
 
     public Long getId() {
         return id;
@@ -63,16 +65,15 @@ public class Vagas{
         this.status = status;
     }
 
-    public Empresa getEmpIdVagas() {
-        return empIdVagas;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setEmpIdVagas(Empresa empIdVagas) {
-        this.empIdVagas = empIdVagas;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     
-
     
      
 }

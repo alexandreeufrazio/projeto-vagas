@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.gov.sp.fatec.projetovagas.entity.Empresa;
-import br.gov.sp.fatec.projetovagas.entity.Vagas;
+//import br.gov.sp.fatec.projetovagas.entity.Vagas;
 
 /**
  * Hello world!
@@ -21,10 +21,10 @@ public class App
 
         /*
         Empresa empresa = new Empresa();
-        empresa.setNomeFantasia("Apple");
-        empresa.setCnpj("11111111111111");
-        empresa.setResponsavel("Alexandre");
-        empresa.setTelefone("129111111");
+        empresa.setNomeFantasia("IBM");
+        empresa.setCnpj("1111111111222");
+        empresa.setResponsavel("Isabel");
+        empresa.setTelefone("129111122");
 
         try{
             manager.getTransaction().begin();
@@ -36,12 +36,15 @@ public class App
         }
         */
 
-        Empresa empresa = manager.find(Empresa.class, 1L);
+
+        
+        Empresa empresa = manager.find(Empresa.class, 2L);
         System.out.println(empresa.getId());
         System.out.println(empresa.getNomeFantasia());
+        /*
         for(Vagas vagas: empresa.getVagas()){
             System.out.println(vagas.getCargo());
-        }
+        }*/
         manager.close();
 
     }
