@@ -2,37 +2,45 @@ package br.gov.sp.fatec.projetovagas.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "end_endereco")
 @Entity
 public class Endereco{
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "end_id")
     private Long id;
 
-    @Column(name = "end_tipo")
+    @Column(name = "end_tipo", length = 10, nullable = false)
     private String tipo;
 
-    @Column(name = "end_tipo_descricao")
+    @Column(name = "end_tipo_descricao", length = 50)
     private String tipoDescricao;
 
-    @Column(name = "end_numero")
+    @Column(name = "end_numero", length = 10)
     private String numero;
 
-    @Column(name = "end_cidade")
+    @Column(name = "end_cidade", length = 20)
     private String cidade;
 
-    @Column(name = "end_estado")
+    @Column(name = "end_estado", length = 20)
     private String estado;
 
-    @Column(name = "end_pais")
+    @Column(name = "end_pais", length = 20)
     private String pais;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "emp_id")
+    private Empresa endereco;
 
     public Long getId() {
         return id;
@@ -89,5 +97,15 @@ public class Endereco{
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    public Empresa getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Empresa endereco) {
+        this.endereco = endereco;
+    }
+
+    
         
 }

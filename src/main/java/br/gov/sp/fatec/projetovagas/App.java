@@ -39,7 +39,7 @@ public class App
         Empresa empresa = manager.find(Empresa.class, 1L);
         System.out.println(empresa.getId());
         System.out.println(empresa.getNomeFantasia());
-        for(Vagas vagas: empresa.getVagasAnunciadas()){
+        for(Vagas vagas: empresa.getVagas()){
             System.out.println(vagas.getCargo());
         }
         manager.close();

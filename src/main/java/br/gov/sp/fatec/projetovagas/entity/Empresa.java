@@ -16,31 +16,31 @@ import javax.persistence.Table;
 @Entity
 public class Empresa {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_id")
     private Long id;
 
-    @Column(name = "emp_cnpj")
+    @Column(name = "emp_cnpj", length = 14, nullable = false)
     private String cnpj;
 
-    @Column(name = "emp_nome_fantasia")
+    @Column(name = "emp_nome_fantasia", length = 50, nullable = false)
     private String nomeFantasia;
 
-    @Column(name = "emp_responsavel")
+    @Column(name = "emp_responsavel", length = 100, nullable = false)
     private String responsavel;
 
-    @Column(name = "emp_telefone")
+    @Column(name = "emp_telefone", length = 15, nullable = false)
     private String telefone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy =  "emp_id")
-    private Set<Vagas> vagasAnunciadas;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy =  "vagas")
+    private Set<Vagas> vagas;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
-    private Set<ContaUsuario> contaDoUsuario;
+    private Set<ContaUsuario> conta;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
-    private Set<Endereco> enderecoEmpresa;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "endereco")
+    private Set<Endereco> endereco;
 
     public Long getId() {
         return id;
@@ -82,28 +82,28 @@ public class Empresa {
         this.telefone = telefone;
     }
 
-    public Set<Vagas> getVagasAnunciadas() {
-        return vagasAnunciadas;
+    public Set<Vagas> getVagas() {
+        return vagas;
     }
 
-    public void setVagasAnunciadas(Set<Vagas> vagasAnunciadas) {
-        this.vagasAnunciadas = vagasAnunciadas;
+    public void setVagas(Set<Vagas> vagas) {
+        this.vagas = vagas;
     }
 
-    public Set<Endereco> getEnderecoEmpresa() {
-        return enderecoEmpresa;
+    public Set<ContaUsuario> getConta() {
+        return conta;
     }
 
-    public void setEnderecoEmpresa(Set<Endereco> enderecoEmpresa) {
-        this.enderecoEmpresa = enderecoEmpresa;
+    public void setConta(Set<ContaUsuario> conta) {
+        this.conta = conta;
     }
 
-    public Set<ContaUsuario> getContaDoUsuario() {
-        return contaDoUsuario;
+    public Set<Endereco> getEndereco() {
+        return endereco;
     }
 
-    public void setContasDosUsuario(Set<ContaUsuario> contaDoUsuario) {
-        this.contaDoUsuario = contaDoUsuario;
+    public void setEndereco(Set<Endereco> endereco) {
+        this.endereco = endereco;
     }
        
 }
