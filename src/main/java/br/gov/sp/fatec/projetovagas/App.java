@@ -6,6 +6,7 @@ import javax.persistence.Persistence;
 import br.gov.sp.fatec.projetovagas.entity.Empresa;
 import br.gov.sp.fatec.projetovagas.entity.Vagas;
 
+
 /**
  * Hello world!
  *
@@ -45,9 +46,9 @@ public class App
             }catch(IllegalThreadStateException e){
                 e.printStackTrace();    
             }
+           
         manager.close();
-        factory.close();
-
+       
     }
 
 
