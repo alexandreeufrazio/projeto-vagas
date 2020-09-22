@@ -32,7 +32,6 @@ create table vag_vagas (
 	vag_cargo varchar(50) not null,
 	vag_descricao varchar(500) not null,
 	vag_status varchar(10) not null,
-	emp_id bigint unsigned,
 	constraint vag_emp_fk foreign key (vag_id)
 	references emp_empresa (emp_id)
 );
