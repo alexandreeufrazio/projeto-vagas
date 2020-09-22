@@ -3,9 +3,8 @@ package br.gov.sp.fatec.projetovagas;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import br.gov.sp.fatec.projetovagas.entity.Empresa;
-//import br.gov.sp.fatec.projetovagas.entity.Vagas;
+import br.gov.sp.fatec.projetovagas.entity.Vagas;
 
 /**
  * Hello world!
@@ -35,17 +34,19 @@ public class App
             manager.getTransaction().rollback();   
         }
         */
-
-
+        try{
+                Empresa empresa = manager.find(Empresa.class, 1L);
+                System.out.println(empresa.getId());
+                System.out.println(empresa.getNomeFantasia());
         
-        Empresa empresa = manager.find(Empresa.class, 2L);
-        System.out.println(empresa.getId());
-        System.out.println(empresa.getNomeFantasia());
-        /*
-        for(Vagas vagas: empresa.getVagas()){
-            System.out.println(vagas.getCargo());
-        }*/
+                for(Vagas vagas: empresa.getVagas()){
+                System.out.println(vagas.getCargo());
+                }
+            }catch(IllegalThreadStateException e){
+                e.printStackTrace();    
+            }
         manager.close();
+        factory.close();
 
     }
 

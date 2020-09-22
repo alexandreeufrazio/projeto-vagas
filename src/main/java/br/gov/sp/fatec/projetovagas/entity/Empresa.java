@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-//import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "emp_empresa")
@@ -35,12 +34,7 @@ public class Empresa {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy =  "empresa")
     private Set<Vagas> vagas;
-    /*
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "emp_id")
-    private Set<ContaUsuario> conta;
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "endereco")
-    private Set<Endereco> endereco;*/
+    
 
     public Long getId() {
         return id;
@@ -91,24 +85,5 @@ public class Empresa {
         this.vagas = vagas;
     }
 
-    /*
-
-    public Set<ContaUsuario> getConta() {
-        return conta;
-    }
-    /*
-    public void setConta(Set<ContaUsuario> conta) {
-        this.conta = conta;
-    }
-
-    public Set<Endereco> getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Set<Endereco> endereco) {
-        this.endereco = endereco;
-    }
-
-    */
-       
+     
 }
