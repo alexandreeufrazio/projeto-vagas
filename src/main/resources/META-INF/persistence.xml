@@ -11,7 +11,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
         <class>br.gov.sp.fatec.projetovagas.entity.Empresa</class>
         <class>br.gov.sp.fatec.projetovagas.entity.Vagas</class>
         <class>br.gov.sp.fatec.projetovagas.entity.Endereco</class>
-        <class>br.gov.sp.fatec.projetovagas.entity.ContaUsuario</class>
+        <class>br.gov.sp.fatec.projetovagas.entity.Usuario</class>
 
 		
 		<properties>
