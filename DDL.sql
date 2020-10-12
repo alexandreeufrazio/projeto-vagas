@@ -1,6 +1,6 @@
---drop user 'user'@'localhost';
+-- drop user 'user'@'localhost';
 
---drop schema vaga;
+-- drop schema vaga;
 
 create schema vaga;
 
