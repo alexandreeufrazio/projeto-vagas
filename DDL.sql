@@ -1,6 +1,6 @@
--- drop user 'user'@'localhost';
+--drop user 'user'@'localhost';
 
--- drop schema vagas;
+--drop schema vaga;
 
 create schema vaga;
 
@@ -20,8 +20,7 @@ create table usu_usuario (
 	usu_id bigint unsigned primary key auto_increment,
 	usu_nome_usuario varchar(50) not null,
 	alu_senha varchar(50) not null,
-	constraint usu_nome_usuario_uk unique (usu_nome_usuario),
-	
+	constraint usu_nome_usuario_uk unique (usu_nome_usuario)	
 );
 create table vag_vaga (
 	vag_id bigint unsigned primary key auto_increment,
@@ -36,6 +35,6 @@ create table anu_anuncio (
 	primary key (usu_id, emp_id),
 	constraint anu_usu_fk foreign key (usu_id)
 	references usu_usuario (usu_id),
-	constraint vag_emp_fk foreign key (emp_id)
+	constraint anu_emp_fk foreign key (emp_id)
 	references emp_empresa (emp_id)
 );
