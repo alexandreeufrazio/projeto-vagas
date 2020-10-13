@@ -46,7 +46,7 @@ public class App {
 
         manager.clear();
 
-        usuario = manager.find(Usuario.class, usuario.getId);
+        usuario = manager.find(Usuario.class, usuario.getId());
         System.out.println(usuario.getId());
         System.out.println(usuario.getNomeUsuario());
         for(Vaga vaga1: usuario.getVagas()){
@@ -55,7 +55,7 @@ public class App {
 
         manager.clear();
         
-        vaga = manager.find(Vaga.class, vaga.getId);
+        vaga = manager.find(Vaga.class, vaga.getId());
         System.out.println(vaga.getDescricao());
         for(Usuario usuario1: vaga.getUsuarios()){
 	        System.out.println(usuario1.getNomeUsuario());
