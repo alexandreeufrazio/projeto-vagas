@@ -1,10 +1,14 @@
 package br.gov.sp.fatec.projetovagas.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name = "emp_empresa")
@@ -21,6 +25,9 @@ public class Empresa{
 
     @Column(name = "emp_senha")
     private String senha;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "anunciante")
+    private Set<Vaga> vagasAnunciadas;
 
     public Long getId() {
         return id;
@@ -46,9 +53,11 @@ public class Empresa{
         this.senha = senha;
     }
 
-    
+    public Set<Vaga> getVagasAnunciadas() {
+        return vagasAnunciadas;
+    }
 
-    
-
-
+    public void setVagasAnunciadas(Set<Vaga> vagasAnunciadas) {
+        this.vagasAnunciadas = vagasAnunciadas;
+    }
 }

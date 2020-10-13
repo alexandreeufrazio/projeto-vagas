@@ -31,10 +31,10 @@ create table vag_vaga (
 );
 create table ace_acesso (
 	usu_id bigint unsigned,
-	emp_id bigint unsigned,
-	primary key (usu_id, emp_id),
+	vag_id bigint unsigned,
+	primary key (usu_id, vag_id),
 	constraint ace_usu_fk foreign key (usu_id)
 	references usu_usuario (usu_id),
-	constraint ace_emp_fk foreign key (emp_id)
-	references emp_empresa (emp_id)
+	constraint ace_vag_fk foreign key (vag_id)
+	references vag_vaga (vag_id)
 );
