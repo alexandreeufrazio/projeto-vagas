@@ -61,10 +61,10 @@ public class App {
         for(Usuario usuario1: vaga.getUsuarios()){
 	        System.out.println(usuario1.getNomeUsuario());
         }
-
+        
         // Apaga registro (permite re-execução)
         manager.remove(vaga.getAnunciante());
-        for(Usuario usuario1 : vaga.getUsuarios){
+        for(Usuario usuario1: vaga.getUsuarios()){
             manager.remove(usuario1);
         }
         
