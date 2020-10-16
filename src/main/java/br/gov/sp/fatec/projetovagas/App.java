@@ -55,13 +55,20 @@ public class App {
 
         manager.clear();
         
+        // Busca vaga pelo ID
         vaga = manager.find(Vaga.class, vaga.getId());
         System.out.println(vaga.getDescricao());
         for(Usuario usuario1: vaga.getUsuarios()){
 	        System.out.println(usuario1.getNomeUsuario());
         }
 
+        // Apaga registro (permite re-execução)
+        manager.remove(vaga.getAnunciante());
+        for(Usuario usuario1 : vaga.getUsuarios){
+            manager.remove(usuario1);
+        }
+        
+        manager.remove(vaga);
         manager.close();
-
     }
 }
