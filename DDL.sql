@@ -12,8 +12,8 @@ grant select, insert, delete, update on vaga.* to user@'localhost';
 
 create table cont_conta (
     cont_id bigint unsigned primary key auto_increment,
-	cont_nome_usuario varchar(50) not null,
-	cont_senha varchar(50) not null,
+    cont_nome_usuario varchar(50) not null,
+    cont_senha varchar(50) not null,
     constraint cont_nome_usuario_uk unique (cont_nome_usuario)	
 );
 
@@ -21,7 +21,7 @@ create table emp_empresa (
 	emp_id bigint unsigned primary key,
 	emp_razao_social varchar(50) not null,
 	constraint emp_razao_social_uk unique (emp_razao_social),
-    constraint emp_cont_fk foreign key (emp_id)
+        constraint emp_cont_fk foreign key (emp_id)
            references cont_conta(cont_id)
 );
 create table usu_usuario (
