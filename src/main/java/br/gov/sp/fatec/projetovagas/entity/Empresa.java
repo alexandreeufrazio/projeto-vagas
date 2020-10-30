@@ -6,10 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Table(name = "emp_empresa")
 @Entity
+@PrimaryKeyJoinColumn(name = "emp_id")
 public class Empresa extends Conta{
 
     @Column(name = "emp_razao_social")

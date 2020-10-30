@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.projetovagas;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -61,14 +62,27 @@ public class App {
         for(Usuario usuario1: vaga.getUsuarios()){
 	        System.out.println(usuario1.getNomeUsuario());
         }
-        
+
         // Apaga registro (permite re-execução)
-        manager.remove(vaga.getAnunciante());
-        for(Usuario usuario1: vaga.getUsuarios()){
-            manager.remove(usuario1);
+
+        try{
+            manager.getTransaction().begin();
+            empresa = vaga.getAnunciante();
+            vaga.setAnunciante(null);
+            Set<Usuario> usuarios = vaga.getUsuarios();
+            vaga.setUsuarios(null);
+            manager.remove(vaga);
+            manager.remove(empresa);
+            for(Usuario us: usuarios){
+                manager.remove(us);
+            }
+            manager.getTransaction().commit();
+        }catch(PersistenceException e){
+            e.printStackTrace();
+            manager.getTransaction().rollback();
+            
         }
         
-        manager.remove(vaga);
         manager.close();
     }
 }
