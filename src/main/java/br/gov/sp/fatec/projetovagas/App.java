@@ -26,6 +26,7 @@ public class App {
 
         Empresa empresa = new Empresa();
         empresa.setRazao_social("IBM");
+        empresa.setNomeUsuario("Lucas");
         empresa.setSenha("senhaF0rte");
         
         Vaga vaga = new Vaga();
@@ -81,7 +82,7 @@ public class App {
             e.printStackTrace();
             manager.getTransaction().rollback();
             
-        }
+        } 
         
         manager.close();
     }

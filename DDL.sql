@@ -1,7 +1,3 @@
- --drop user 'user'@'localhost';
-
- --drop schema vaga;
-
 create schema vaga;
 
 use vaga;
@@ -21,7 +17,7 @@ create table emp_empresa (
 	emp_id bigint unsigned primary key,
 	emp_razao_social varchar(50) not null,
 	constraint emp_razao_social_uk unique (emp_razao_social),
-        constraint emp_cont_fk foreign key (emp_id)
+    constraint emp_cont_fk foreign key (emp_id)
            references cont_conta(cont_id)
 );
 create table usu_usuario (
