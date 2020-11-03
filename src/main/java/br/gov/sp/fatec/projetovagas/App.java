@@ -1,12 +1,14 @@
 package br.gov.sp.fatec.projetovagas;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
+import javax.persistence.TypedQuery;
 
 import br.gov.sp.fatec.projetovagas.entity.Empresa;
 import br.gov.sp.fatec.projetovagas.entity.Usuario;
@@ -62,6 +64,25 @@ public class App {
         System.out.println(vaga.getDescricao());
         for(Usuario usuario1: vaga.getUsuarios()){
 	        System.out.println(usuario1.getNomeUsuario());
+        }
+
+        vaga.setDescricao("Diretor");
+        try{
+            manager.getTransaction().begin();
+            manager.merge(vaga);
+            manager.getTransaction().commit();
+        }catch(PersistenceException e){
+            e.printStackTrace();
+            manager.getTransaction().rollback();
+        }
+
+        String queryString = "select t from Vaga t inner join t.usuarios u where u.nomeUsuario like :nome";
+        TypedQuery<Vaga> query = manager.createQuery(queryString, Vaga.class);
+        query.setParameter("nome", "%lexandr%");
+
+        List<Vaga> resultados = query.getResultList();
+        for(Vaga vag: resultados){
+            System.out.println("Vaga: " + vag.getDescricao());
         }
 
         // Apaga registro (permite re-execução)
