@@ -10,6 +10,8 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
+import br.gov.sp.fatec.projetovagas.dao.VagaDao;
+import br.gov.sp.fatec.projetovagas.dao.VagaDaoJpa;
 import br.gov.sp.fatec.projetovagas.entity.Empresa;
 import br.gov.sp.fatec.projetovagas.entity.PersistenceManager;
 import br.gov.sp.fatec.projetovagas.entity.Usuario;
@@ -36,16 +38,9 @@ public class App {
         vaga.setUsuarios(new HashSet<Usuario>());
         vaga.getUsuarios().add(usuario);
         
-        try{
-            manager.getTransaction().begin();
-            manager.persist(usuario);
-            manager.persist(empresa);
-            manager.persist(vaga);
-            manager.getTransaction().commit();
-        }catch(PersistenceException e){
-            e.printStackTrace();
-            manager.getTransaction().rollback();
-        }
+        // Salva usuario, empresa e vaga
+        VagaDao vagaDao = new VagaDaoJpa(manager);
+        vagaDao.salvarVaga(vaga);
 
         manager.clear();
 

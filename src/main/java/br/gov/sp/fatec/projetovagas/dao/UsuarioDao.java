@@ -8,6 +8,8 @@ public interface UsuarioDao {
 
     public Usuario salvarUsuario(Usuario usuario);
 
+    public Usuario salvarUsuarioSemCommit(Usuario usuario);
+
     public Usuario buscarUsuarioPorId(Long id);
 
     public void removerUsuario(Long id);  
