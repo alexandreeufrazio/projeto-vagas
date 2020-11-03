@@ -6,6 +6,8 @@ public interface UsuarioDao {
     
     public Usuario cadastrarUsuario(String nomeUsuario, String senha);
 
+    public Usuario salvarUsuario(Usuario usuario);
+
     public Usuario buscarUsuarioPorId(Long id);
 
     public void removerUsuario(Long id);  

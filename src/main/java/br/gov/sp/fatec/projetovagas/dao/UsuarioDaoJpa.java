@@ -56,7 +56,7 @@ public class UsuarioDaoJpa implements UsuarioDao {
 
     @Override
     public void removerUsuario(Long id) {
-        Usuario usuario = buscarUsuarioPorId(Id);
+        Usuario usuario = buscarUsuarioPorId(id);
         if(usuario == null){
             throw new RuntimeException("Usuario não cadastrado!");
         }
