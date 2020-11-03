@@ -11,16 +11,15 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import br.gov.sp.fatec.projetovagas.entity.Empresa;
+import br.gov.sp.fatec.projetovagas.entity.PersistenceManager;
 import br.gov.sp.fatec.projetovagas.entity.Usuario;
 import br.gov.sp.fatec.projetovagas.entity.Vaga;
 
 public class App {
     
 	public static void main( String[] args ){
-        EntityManagerFactory factory = Persistence.
-            createEntityManagerFactory("vaga");
-        EntityManager manager = factory.createEntityManager();
-
+        
+        EntityManager manager = PersistenceManager.getInstance().getEntityManager();
 
         Usuario usuario = new Usuario();
         usuario.setNomeUsuario("Alexandre");
