@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 
 import br.gov.sp.fatec.projetovagas.entity.PersistenceManager;
+import br.gov.sp.fatec.projetovagas.entity.Usuario;
 import br.gov.sp.fatec.projetovagas.entity.Vaga;
 
 public class VagaDaoJpa implements VagaDao {
@@ -24,7 +25,15 @@ public class VagaDaoJpa implements VagaDao {
              if(vaga.getAnunciante() != null && vaga.getAnunciante().getId() == null){
                 EmpresaDao empresaDao = new EmpresaDaoJpa(em);
                 empresaDao.salvarEmpresaSemCommit(vaga.getAnunciante());
+            }
+            if(vaga.getUsuarios() != null && !vaga.getUsuarios().isEmpty()){
+                UsuarioDao usuarioDao = new UsuarioDaoJpa(em);
+                for(Usuario usuario: vaga.getUsuarios()){
+                    if(usuario.getId() == null){
+                        usuarioDao.salvarUsuarioSemCommit(usuario);
+                    }
 
+                }
             }
             if(vaga.getId() == null){
                 em.persist(vaga);

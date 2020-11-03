@@ -31,12 +31,7 @@ public class UsuarioDaoJpa implements UsuarioDao {
     public Usuario salvarUsuario(Usuario usuario){
         try{
             em.getTransaction().begin();
-            if(usuario.getId() == null){
-                em.persist(usuario);
-            }
-            else{
-                em.merge(usuario);
-            }
+            salvarUsuarioSemCommit(usuario);
             em.getTransaction().commit();
             return usuario;
         }catch(PersistenceException e){
@@ -44,6 +39,18 @@ public class UsuarioDaoJpa implements UsuarioDao {
             em.getTransaction().rollback();
             throw new RuntimeException("Erro ao salvar Usuário!", e);
         }
+    }
+
+    @Override
+    public Usuario salvarUsuarioSemCommit(Usuario usuario){
+        if(usuario.getId() == null){
+            em.persist(usuario);
+        }
+        else{
+            em.merge(usuario);
+        }
+        return Usuario;
+
     }
 
     @Override

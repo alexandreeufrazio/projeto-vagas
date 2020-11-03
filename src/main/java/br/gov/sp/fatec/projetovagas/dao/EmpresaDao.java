@@ -7,6 +7,8 @@ public interface EmpresaDao {
 
     public Empresa salvarEmpresa(Empresa empresa);
 
+    public Empresa salvarEmpresaSemCommit(Empresa empresa);
+
     public Empresa buscarEmpresa(String nomeUsuario);
 
     public void removerEmpresa(String nomeUsuario);  
