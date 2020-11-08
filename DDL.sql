@@ -32,6 +32,12 @@ create table vag_vaga (
 	constraint vag_emp_fk foreign key (emp_anunciante_id)
 	references emp_empresa (emp_id)
 );
+
+create table tre_treinamento (
+    tre_id bigint unsigned primary key auto_increment,
+	tre_descricao varchar(200) not null
+);
+
 create table ace_acesso (
 	usu_id bigint unsigned,
 	vag_id bigint unsigned,
